@@ -1,12 +1,19 @@
 cmake_minimum_required(VERSION 3.15)
-project(Project3)
+project(Project4)
 
 set(CMAKE_CXX_STANDARD 17)
 
 include_directories(.)
 
-add_executable(Project3
-        AVLTree.h
-        BinarySearchTree.h
+add_executable(Project4
+        sorting-algorithms/bubbleSort.h
+        sorting-algorithms/heapSort.h
+        sorting-algorithms/insertionSort.h
+        sorting-algorithms/mergeSort.h
+        sorting-algorithms/printVec.h
+        sorting-algorithms/quickSort.h
+        sorting-algorithms/radixSort.h
+        sorting-algorithms/selectionSort.h
+        stability-test/contactsList.h
         main.cpp
-        SplayTree.h)
+)

@@ -1,46 +1,38 @@
-# Project 3 Report
+# Project 4 Report
 
-Answer the following questions directly in this file:
-* You will have a different grader again, so make sure your report includes information about your dataset.
-    * My dataset is a csv of characters from the anime/manga One Piece, with information of the year they first appeared in print, 
-      the chapter of first appearance, and episode of first appearance
-* How do the depths of the random-ordered integers compare to the depths of the ordered integers for each tree? Why?
-    * In the BST of ordered integers, the ints are read in ascending order and each new int becomes a right child of 
-      its parent, creating a depth equal to the number of ints in the vector (no siblings or left children). For random order,
-      the tree has shallower depth because the shuffled integers have the chance to be right or left children,
-      and the tree is more balanced. 
-    * In the AVL of ordered integers and random-ordered integers, the depths of each item were different, but
-      the general balance of the tree and how deep it goes doesn't change much. The AVL tree is self balancing,
-      so it will be balanced this way no matter if the integers are ordered or shuffled.
-      * In the Splay trees of ordered and random-ordered integers, the depth of the ordered integers is far greater than the shuffled set of ints.
-        The ordered integers have a max depth of 99, whereas the random-ordered has a max depth of 8.
-* How do the depths of each custom-data-type tree compare to each other?
-    * The depth of the BST is equal to the number of items in the vector (the index), so it has a depth of 1316. The AVL tree
-      was considerably less deep, with a max depth of 10. The splay tree had a max depth of 1316 like the BST did, but notably had
-      only one node that was that deep. Most of the depths of the Splay tree were concentrated from around 2-9, with a few outliers in 
-      the first few nodes being far deeper. 
+Answer the following prompts directly in this file:
 
-* Why do the depths of the second custom-data-type Splay Tree make sense?
-    * Each first time it finds the depth of the item, it moves it to the top. It follows that the first time a node is visited the depth is a non-1 number,
-      and each of the following 4 depths are 1 because the item was moved to the root
+* Information about your dataset (you will be assigned a different grader for this project).
+  * My Dataset is about the manga/anime One Piece, and has columns representing numbers(1-1317), character names, and the chapter, episode, and year the character was first introduced.
 
-* Graph the Binary Search Tree, AVL Tree, and Splay Tree depths for the custom data type trees. Do not use C++ to graph, you can use whatever spreadsheet application or graphical programming language you prefer. You can use whatever graph is most readable to you (e.g. scatter plot, histogram, etc.).
-  * Your graphs should have clear labels for both x and y axes.
-  * Save your graph files in the graphs folder.
-  * You do not need to graph the depths of the integer type trees or the Splay Tree that finds each object 5 times in a row, but you can if you feel it helps you analyze the data.
-  * An example graph spreadsheet and an example graph image have been included in the starter code.
-  * Here is how you include an image in your Report.md file: ![example graph](graphs/example-graph.png)
-  * ![BST Graph](graphs/BST_CustomType_Graph.png)
-  * ![AVL Graph](graphs/AVL_CustomType_Graph.png)
-  * ![SPLAY Graph](graphs/SPLAY_CustomType_Graph.png)
-* ****** NOTE: I did each of the 3 graphs differently (line vs scatter graphs, which axis was which) to better visualize the data for each different tree type and 
-                to practice more with excel which I don't often use. 
-* Compare and contrast the graphs and explain the differences based on what you know about the structure and behavior of the trees. Justify the time complexity of searching the trees based on the results.
-  * The line graph for the BST shows the worst case time complexity of O(N), where the tree is a linked list and each new node is a right child of its parent. 
-  * In my scatter plot for the AVL tree, it shows the dispersion of different depth values at the different item indices. I believe the time complexity is O(log N) for the AVL tree,
-     because it is self-balancing no matter the order objects are inserted in.
-  * In the graph of the Splay tree, nearly all the indexes depths are clustered in the shallowest depths, with a few outliers reaching far deeper. I believe
-    this shows a time complexity of O(log N), because the depth starts very high but then drops and plateaus after just a few nodes.
-  **Note: Any code that was not authored by yourself or the instructor must be cited in your report. This includes the use of concepts not taught in lecture.**
-    Used concept from stack overflow https://stackoverflow.com/questions/27847128/using-for-loop-to-add-numbers-to-a-vector
-    not sure if we covered push_back in class so I am citing it to be safe :P
+* Analyze the data. Graph the number of reads and allocations for each sorting algorithm and look at how the number of reads and allocations grows when the size of the data set grows. Compare and contrast the different sorting algorithms and draw conclusions about which sorting algorithms are more efficient. Discuss complexities and their effects.
+  * The first noticeable thing in graphing my output was the similar constant values for Allocations represented in 3 of my sorting algorithms, those being Bubble, Heap, and Selection sort. This
+  makes sense, as all 3 have an auxliary complexity of O(1), and therefore the size of the vector does not affect the amount of memory used. On the other hand, Merge sort with an auxilary complexity
+  of O(N), shows a linear decline in the amount of allocations per iteration, as well as having a significantly higher amount of allocations, at even the last iteration (smallest vector), 
+  than the other 3 sorting algorithms did. As far as the number of reads, Merge sort graphs as linear again, opposed to the other 3 algorithms which show curves. The graphs for bubble heap and selection sort appear similar, the
+  actual values vary but the general shape of the graphs are similar. Heap sort has a time complexity of O(nLog(n)), while Selection and Bubble sort have O(n^2). I think the reason that the graph for Heap sort appears 
+  similar to the other two as far as the shape of the curve is because Heap sort has a smaller amount of reads relative to the other two, so the scope of the graph presents differently, whereas if they were all graphed together
+  on the same scale the difference in the steepness would be more apparent. I would conclude that Merge sort would be the best algorithm to use in this case, as it is stable and efficient, with the time declining logarithmically and 
+  the algorithm allocating memory at a O(n) complexity.
+
+
+* Look at the output from the stabilityTest function and answer the following questions:
+  * How are the names sorted by default?
+    * They are default sorted alphabetically by first name.
+  
+  * How is the output from the two stable sorting algorithms different from the two unstable ones? Be specific in your answer, and use what you know about how each sorting algorithm works to justify your observations.
+    * These algorithms are sorting by last name instead of first name, and the stable and unstable algorithms present different results. In the stable algorithms, those with the same last name maintain the original order of first names from the default sorting. 
+    * In the unstable algorithms, this first name ordering is not preserved. For example, in the default ordering, Blake Black came before both Jordan and Sam Black. However, in heap sort the order goes Jordan, Sam, Blake. In the default ordering, Alex White was 
+    the first on the list, whereas in Selection sort he appears below both Red and Robin White. This shows the instability of these algorithms, and how the way they sort does not preserve default ordering of duplicate items.
+
+* Answers to the following questions: 
+  * If you need to sort a contacts list on a mobile app, which sorting algorithm(s) would you use and why?
+    * I would choose either the stable version of Quick sort, or use Merge sort. A list of contacts is likely not too large of a dataset,
+    and you would want to use a stable algorithm to ensure contacts with the same name or information stay in the right order. 
+  
+  * What about if you need to sort a database of 20 million client files that are stored in a datacenter in the cloud?
+    * For a large database like this, I think that Merge sort would work well, as it is stable and is ideal for the use case of a very large dataset.
+    Merge sort does have a slightly higher time complexity of Nlog(N), it is relatively efficient for a dataset this size. Depending on the data type, a Radix sort could also
+    work, but would need the data to have a known maximum.
+
+**Note: Any code that was not authored by yourself or the instructor must be cited in your report. This includes the use of concepts not taught in lecture.**

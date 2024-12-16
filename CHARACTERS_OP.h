@@ -86,23 +86,23 @@ public:
     }
 
     bool operator<(const Character &other) const{
-        return this->name < other.name;
+        return this->chapter < other.chapter;
     }
 
     bool operator>(const Character &other) const{
-        return this->name > other.name;
+        return this->chapter > other.chapter;
     }
 
     bool operator<=(const Character &other) const{
-        return this->name <= other.name;
+        return this->chapter <= other.chapter;
     }
 
     bool operator>=(const Character &other) const{
-        return this->name >= other.name;
+        return this->chapter >= other.chapter;
     }
 
     bool operator==(const Character &other) const{
-        return this->name == other.name;
+        return this->chapter == other.chapter;
     }
 
 
@@ -184,6 +184,7 @@ public:
         else{
             cout << "Error opening file" << endl;}
         fileIn.close();
+
     };
 };
 
