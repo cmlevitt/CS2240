@@ -36,6 +36,7 @@ public:
         year = 0000;
     }
 
+
     Character(int number, string name, int chapter, int episode, int year)
     {
         this->number = number;
