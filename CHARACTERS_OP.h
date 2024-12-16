@@ -20,7 +20,8 @@ using std::left;
 using std::setw;
 using std::ostream;
 
-class Character{
+class Character
+{
 private:
     //fields
     string name;
@@ -49,7 +50,7 @@ public:
     }
 
     void setNumber(int number){
-      this->number = number;
+        this->number = number;
         this->number = number;
     }
 
@@ -61,27 +62,47 @@ public:
     }
 
     int getChapter() const{
-      return chapter;
+        return chapter;
     }
 
     void setChapter(int chapter){
-      this->chapter = chapter;
+        this->chapter = chapter;
     }
 
     int getEpisode() const{
-      return episode;
+        return episode;
     }
 
     void setEpisode(int episode){
-      this->episode = episode;
+        this->episode = episode;
     }
 
     int getYear() const{
-      return year;
+        return year;
     }
 
     void setYear(int year){
-      this->year = year;
+        this->year = year;
+    }
+
+    bool operator<(const Character &other) const{
+        return this->name < other.name;
+    }
+
+    bool operator>(const Character &other) const{
+        return this->name > other.name;
+    }
+
+    bool operator<=(const Character &other) const{
+        return this->name <= other.name;
+    }
+
+    bool operator>=(const Character &other) const{
+        return this->name >= other.name;
+    }
+
+    bool operator==(const Character &other) const{
+        return this->name == other.name;
     }
 
 
@@ -96,79 +117,74 @@ public:
         return outs;
     }
 
-    friend bool operator == (const Character& lhs, const Character& rhs)
+    void getA_Z(string firstName, string lastName)
     {
-        return lhs.name == rhs.name;
+        cout << "The first character alphabetically is " << firstName << endl;
+        cout << "The last character alphabetically is " << lastName << "\n" << endl;
     }
-};
-
-void getA_Z(string firstName, string lastName)
-{
-  cout << "The first character alphabetically is " << firstName << endl;
-  cout << "The last character alphabetically is " << lastName << "\n" << endl;
- }
 
 
-//use & to pass vector by reference
-void getDataFromFile(string filename, vector<Character>& characters)
-{
-    ifstream fileIn;
-    fileIn.open(filename);
-    if(fileIn)
+    //use & to pass vector by reference
+    void getDataFromFile(string filename, vector<Character>& characters)
     {
-        string header;
-        getline(fileIn, header);
-
-        //declare variables
-        string name = "", newline = "";
-        int number = 0, chapter = 0, episode = 0, year = 0000;
-        char comma = ',';
-
-        while (fileIn)
+        ifstream fileIn;
+        fileIn.open(filename);
+        if(fileIn)
         {
-            //number
-            fileIn >> number;
-            fileIn >> comma;
+            string header;
+            getline(fileIn, header);
 
-            getline(fileIn, name, ',');
+            //declare variables
+            string name = "", newline = "";
+            int number = 0, chapter = 0, episode = 0, year = 0000;
+            char comma = ',';
 
-            //chapter
-            fileIn >> chapter;
-            if (!fileIn) //
+            while (fileIn)
             {
-                chapter = 0;
-                fileIn.clear();
+                //number
+                fileIn >> number;
+                fileIn >> comma;
+
+                getline(fileIn, name, ',');
+
+                //chapter
+                fileIn >> chapter;
+                if (!fileIn) //
+                {
+                    chapter = 0;
+                    fileIn.clear();
+                }
+                fileIn >> comma;
+
+                //episode
+                fileIn >> episode;
+                if (!fileIn)
+                {
+                    episode = 0;
+                    fileIn.clear();
+                }
+                fileIn >> comma;
+
+                fileIn >> year;
+                if (!fileIn) //there was no class 2
+                {
+                    year = 0000;
+                    fileIn.clear();
+                }
+
+
+                //read through newline at end of line to go to next line
+                getline(fileIn, newline);
+
+                //create a character object to store data from the line
+                //and add it to the characters vector
+                characters.push_back(Character(number, name, chapter, episode, year));
             }
-            fileIn >> comma;
-
-            //episode
-            fileIn >> episode;
-            if (!fileIn)
-            {
-                 episode = 0;
-                fileIn.clear();
-            }
-            fileIn >> comma;
-
-        fileIn >> year;
-            if (!fileIn) //there was no class 2
-            {
-                year = 0000;
-                fileIn.clear();
-            }
-
-
-            //read through newline at end of line to go to next line
-            getline(fileIn, newline);
-
-            //create a character object to store data from the line
-            //and add it to the characters vector
-            characters.push_back(Character(number, name, chapter, episode, year));
         }
-    }
-    else{
-      cout << "Error opening file" << endl;}
-    fileIn.close();
-}
+        else{
+            cout << "Error opening file" << endl;}
+        fileIn.close();
+    };
+};
 
 #endif //CHARACTERS_OP
