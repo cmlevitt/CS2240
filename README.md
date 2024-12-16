@@ -1,93 +1,65 @@
-# CS 2240 Project 1
-Choose a data set, read the information into a C++ program, and perform a calculation on the data
+# CS 2240 Project 2
+Create a Queue class and explore big-Oh complexities!
 
-For this project, you will:
+For this project, you will write a C++ program that uses Stack and Queue data structures to store objects of varying data types.
 
-* choose a data set, 
-* write a C++ class to store its information, 
-* read the data into a vector of objects, 
-* perform a calculation on the vector, 
-* and write a report about your project.
+## Requirements
+It is recommended that you use the data and program from Project 1 as a starting point.
 
+### Stack Class
+The Stack class from lecture is included in the starter code for this project.
 
-## Requirements  
+### Queue Class
+Create a Queue class that uses the Node class (also included in the starter code) to create a functioning queue data structure.
+* Your Queue should keep track of where the front and back Nodes are.
+* Your Queue should be able to:
+  * `enqueue` (push Objects onto its back),
+  * `dequeue` (pop and return Objects off its front),
+  * `search` (determine if an Object is in the Queue or not), and
+  * `print` (list all of the items in the Queue object, ordered from front to back).
+* Your Queue must be able to be used with any data type.
+* Your Nodes must be stored in heap memory.
+* Your program must not have any memory leaks.
 
-### Repository
+### Main function
+Create two Queue objects: one of integers and one of strings. Demonstrate that the Queue methods work correctly by calling methods on the integer and string Queues and printing out to the console when appropriate.
 
-* Reference the `GitHub-with-CLion` repository for directions on how to set up and use your GitHub repository.
-* Use the `Project1` template repository to create a new repository in the course GitHub organization. It must be a **private** repository with the naming convention `Project1-netid` where `netid` is your UVM NetID username.
-* Clone your new repository into CLion. 
-* Frequently save your changes locally and remotely through the commit and push commands.
+Perform the following operations:
+* Create a third Queue object and a Stack object, both of the type you created in Project 1.
+* Use a loop to print and enqueue the first 10 objects from your vector (from Project 1) onto the Queue.
+* Use a second loop to dequeue the 10 objects off the Queue and push them onto the Stack.
+* Use a third loop to pop the 10 objects off the Stack and print them.
 
-### Data Set
-
-* Your data set must contain at least 1000 entries (rows). 
-* Each entry must have at least 5 attributes (columns).
-* At least one attribute must be unique for each entry in the data set (i.e. no duplicates).
-* There must not be any vulgarity in the dataset.
-Keep in mind, you will be using this data set for the rest of the projects this semester.
-
-### Class
-
-* Your class must have at least 5 fields where at least one is a numerical type and at least one is a string type. 
-* You should have constructors, getters, setters, and other methods as appropriate. 
-
-### Global Functions
-
-* You must create a function that opens your data file and reads the data into a vector of objects of your class.
-* You must create a function that will loop through your vector of data and perform some kind of calculation on it.
-
-An example program has been provided for you in a folder called `example_project`. It contains data about exoplanets, and you will not be able to use the same data set for your project. Use it as an example of content, code style, and functionality that you can use as a model for your project. Note that this example project is from a previous semester, when reports were required to be in PDF format instead of in a README.md file, and it does not include CMakeLists.txt.
-
+What is the order of the objects before and after adding them to the Queue and Stack? When and why did it change?
+ 
 ### Design
-
 Consider the following questions:
-* What data do you want to use? Where will you get it from?
-* How will you store it in a file? Is it in csv format?
-* How will you read it in using C++? How will you know that it read in correctly?
-* What should you name the class?
-* What fields do you need? What are their types? What names make sense?
-* Which fields and methods need comments to clarify their meaning?
-* What function makes the most sense to calculate on your data?
-
-Some examples of data sets: 
-* All the courses offered at UVM this semester (there is a csv download on the enrollment page).
-* The National Oceanic and Atmospheric Administration (NOAA) collects climate and weather data and allows you to search and download the raw data.
-* Find a list of the top 1000 songs of your favorite genre or decade.
-* Find the 1000 top-rated movies from your favorite movie rating source.
-* Get data about your favorite sports team/teams.
-
-Example functions include:
-* The sum, average, min, and/or max of a column.
-* The shortest/longest word in a column.
-* The number of times a specific value appears in a column.
+* Using the Node class, will the links point from the front to the back of the Queue or from the back to the front? Which way will make the enqueue and dequeue methods more time efficient?
+* How will you make sure there are no memory leaks?
+* How will you print the objects in the main function? Should you overload an operator?
 
 ### Test
-How can you demonstrate in your code that all your class methods function correctly?
+How can you demonstrate in your code that your Queue class works correctly? How can you use the integer and string Queue objects to show this?
 
-How can you demonstrate in your code that your program successfully reads and stores 1000+ objects from your data file?
+Here are a couple hints to help you with testing:
+* Make sure you call each of the `enqueue`, `dequeue`, `search`, and `print` methods at least once.
+* Consider edge cases, like searching in a one-node queue (for when the search should succeed and when it should fail) and calling `dequeue` on an empty queue.
 
-How can you demonstrate in your code that your calculation function works correctly?
-
-### Report 
-You must write a report about your project. Answer the prompts provided in Report.md.
+## Report
+You must write a report about your project. Answer the prompts in the Report.md file.
 
 ## Submit
 
 You must include your source files, your data file(s), CMakeLists.txt, and your updated Report.md file that contains your report to your repository. Submit to Gradescope using the GitHub repository link, double-check that all the correct files are there, and wait for the autograder to provide feedback.
-
 
 ## Grading
 The project is out of 60 points.
 
 | Points Possible | Description of requirement |
 |------------------- | ----------------------------- |
-| 5 pts | Data set satisfies requirements |
-| 5 pts	| Program compiles and runs. |
-| 5 pts	| Code style. Readable, naming style is consistent, comments where appropriate. |
-| 10 pts | Class satisfies requirements. |
-| 5 pts | You have two global functions as described above. |
-| 10 pts | File input works correctly. |
-| 5 pts | Data is stored in a vector of 1000+ objects. |
-| 5 pts | You test your code to demonstrate that everything works correctly. |
+| 5 pts | Program compiles and runs. |
+| 5 pts | Code style. Readable, naming style is consistent, comments where appropriate. |
+| 20 pts | Queue class satisfies requirements. |
+| 10 pts | You create integer and string Queue objects and use them to test your code. |
+| 10 pts | You perform the operations with the Stack and the Queue as described above. |
 | 10 pts | Report satisfies requirements, is easily readable, and is professional. |

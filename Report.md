@@ -1,22 +1,21 @@
-# Project 1 Report
+# Project 2 Report
 
 Answer the following prompts directly in this file:
-* What each of the 5+ attributes of your dataset represent.
-  * My 5 attributes are related to characters in my favorite manga/anime, One Piece. The first column is simply numbered,
-  the second is the characters name. Following that is the manga chapter number they first appeared in, anime episode number they
-  first appeared in, and then the year of the characters first appearance in the story. 
-* Where you got the data from.
-  * I got this data set from Kaggle, there were limited options for my chosen topic and this dataset seemed most comprehensive
-  of those available
-* Why you chose that dataset.   
-  * I chose this dataset because it was fun for me, it is information about a story I love and I enjoyed learning a
-  little bit more about it and working with the data.
-* How the rows are ordered by default (i.e. is the data sorted by a particular column?).
-  * The rows are sorted by character name alphabetically A-Z (These are the english translations of names from a japanese series).
-* How you know your functions work correctly.
-  * My function for the first and last name alphabetically in the dataset works because I can look at my printed dataset, 
-  as well as scroll to the bottom of the list and see which is the last entry.
-* Why you chose that calculation for your dataset.
-  * This made the most sense because the characters names are the primary column of interest, and a unique identifier among the data.
+* Information about your dataset (you will be assigned a different grader for this project)
+    * My dataset is a list of all characters from the manga/anime "One Piece". It includes numbering, 
+      character name, chapter the character first appeared in, episode the character first appeared in, 
+      and the year the character first showed up. 
+* The time complexities of each method in the Stack and Queue classes
+     * Method Complexities:
+     * O(1) - push(), pop(), enqueue(), dequeue()
+     * O(n) - search(), print()
+* Justify your use of pointers in the Queue (i.e. the direction of the arrows between the Nodes) as it relates to the complexity of the enqueue and dequeue methods
+     *   The front pointer references the first node, and the back pointer the last node in the queue.
+         When a new node is enqueued, the next pointer of the last node then points to the new node,
+         which becomes the new last node in the queue.
+* An explanation of when and why the 10 objects in the main function changed their order
+     *  The 10 items changed order when they were dequeued from the Queue and pushed to the stack.
+        This was because the first number being dequeued was number 1, which was then made the bottom of
+        the stack, and so on. The queue was FIFO, and the stack LIFO, changing the order of items. 
 
 **Note: Any code that was not authored by yourself or the instructor must be cited in your report. This includes the use of concepts not taught in lecture.**
